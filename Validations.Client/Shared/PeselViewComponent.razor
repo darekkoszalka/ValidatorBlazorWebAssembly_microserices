@@ -1,0 +1,54 @@
+﻿<h4 class="@DangerClass">@PeselVM.Message</h4>
+<small class="text-secondary">Pesel</small>
+<p>@PeselVM.Pesel</p>
+<small class="text-secondary">Płeć</small>
+<p>@PeselVM.Gender</p>
+<small class="text-secondary">Rok urodzenia</small>
+<p>@PeselVM.Year</p>
+<small class="text-secondary">Miesiąc urodzenia</small>
+<p>@PeselVM.Month</p>
+<small class="text-secondary">Dzień urodzenia</small>
+<p>@PeselVM.Day</p>
+
+
+@code {
+    [Parameter]
+    public PeselVM? PeselVM { get; set; }
+
+    public string? DangerClass { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (!PeselVM.PeselIsValid)
+        {
+            DangerClass = "text-danger";
+        }
+        else
+        {
+            DangerClass = "text-success";
+        }
+
+        base.OnInitialized();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        if (!PeselVM.PeselIsValid)
+        {
+            DangerClass = "text-danger";
+        }
+        else
+        {
+            DangerClass = "text-success";
+        }
+        return base.OnParametersSetAsync();
+    }
+
+
+
+
+
+
+
+}
+

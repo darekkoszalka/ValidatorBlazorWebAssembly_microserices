@@ -1,0 +1,42 @@
+﻿@page "/peselvalidator"
+@using Validations.Client.StaticData
+
+<PageTitle>@Title</PageTitle>
+<Breadcrumb Title="@Title" />
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-6">
+            @if (EditFormIsVisible)
+            {
+                <EditForm Model="@PeselTaskModel" OnValidSubmit="CheckPesel">
+                    <DataAnnotationsValidator />
+                    <div class="form-group">
+                        <label for="pesel" class="form-label text-secondary">Wpisz numer Pesel</label>
+                        <InputText id="pesel" @bind-Value="PeselTaskModel.Pesel" class="form-control" />
+                        <ValidationMessage For="()=>PeselTaskModel.Pesel" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="peselCommand" class="form-label text-secondary">Wybierz zakres danych</label><br />
+                        <InputRadioGroup id="peselCommand" @bind-Value="PeselTaskModel.ChoosedData">
+                            @foreach (var item in PeselCommandSD.PeselCommandList)
+                            {
+                                <InputRadio Value="@item" class="form-check-input" /><span class="p-3">@item</span><br />
+                            }
+                        </InputRadioGroup>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary">Sprawdź</button>
+                    </div>
+                </EditForm>
+            }
+        </div>
+        <div class="col-sm-6">
+            @if (PeselVM != null)
+            {
+                <PeselViewComponent PeselVM="@PeselVM" />
+            }
+        </div>
+    </div>
+</div>
+
+

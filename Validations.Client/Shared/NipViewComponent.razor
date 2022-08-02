@@ -1,0 +1,46 @@
+﻿<h4 class="@DangerClass">@NipVM.Message</h4>
+<small class="text-secondary">Nip</small>
+<p>@NipVM.Nip</p>
+
+
+@code {
+    [Parameter]
+    public NipVM? NipVM { get; set; }
+
+    public string? DangerClass { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (!NipVM.NipIsValid)
+        {
+            DangerClass = "text-danger";
+        }
+        else
+        {
+            DangerClass = "text-success";
+        }
+
+        base.OnInitialized();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        if (!NipVM.NipIsValid)
+        {
+            DangerClass = "text-danger";
+        }
+        else
+        {
+            DangerClass = "text-success";
+        }
+        return base.OnParametersSetAsync();
+    }
+
+
+
+
+
+
+
+}
+

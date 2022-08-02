@@ -1,0 +1,93 @@
+﻿{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:19021"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/allpeseldata/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/allpeseldata/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/peselisvalid/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/peselisvalid/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/getyearofbirth/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/getyearofbirth/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/getmonthofbirth/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/getmonthofbirth/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/getdayofbirth/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/getdayofbirth/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/pesel/getgender/{pesel}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/pesel/getgender/{pesel}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/nip/{nip}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/nip/{nip}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ]
+    }
+
+  ]
+
+}
