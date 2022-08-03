@@ -1,9 +1,16 @@
 ﻿using System;
-namespace Validations.Pesel.Validations;
+using Validations.Pesel.IRepositories;
 
-public static class PeselUtility
+namespace Validations.Pesel.Repositories;
+
+public class PeselUtilityRepository : IPeselUtilityRepository
 {
-    public static string Gender(string pesel)
+    public string GetDayOfDateOfBirth(string pesel)
+    {
+        return pesel.Substring(4, 2);
+    }
+
+    public string GetGender(string pesel)
     {
         int number = (int)pesel[9];
 
@@ -14,10 +21,23 @@ public static class PeselUtility
         };
 
         return gender;
-
     }
 
-    public static string GetYearOfDateOfBirth(string pesel)
+    public string GetMonthOfDateOfBirth(string pesel)
+    {
+        string fourthChar = pesel[3].ToString();
+
+        int thirdChar = (int)pesel[2];
+        string fullMonth = "";
+
+        if (thirdChar % 2 == 0)
+        {
+            return  fullMonth = "0" + fourthChar;
+        }
+        else return fullMonth = "1" + fourthChar;
+    }
+
+    public string GetYearOfDateOfBirth(string pesel)
     {
         string year = pesel.Substring(0, 2);
 
@@ -36,28 +56,7 @@ public static class PeselUtility
             _ => "19" + year
 
         };
-
         return fullYear;
-    }
-
-    public static string GetMonthOfDateOfBirth(string pesel)
-    {
-        string fourthChar = pesel[3].ToString();
-
-        int thirdChar = (int)pesel[2];
-        string fullMonth = "";
-
-        if (thirdChar % 2 == 0)
-        {
-            return fullMonth = "0" + fourthChar;
-        }
-        else return fullMonth = "1" + fourthChar;
-
-    }
-
-    public static string GetDayOfDateOfBirth(string pesel)
-    {
-        return pesel.Substring(4, 2);
     }
 }
 

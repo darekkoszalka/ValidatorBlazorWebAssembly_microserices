@@ -1,9 +1,13 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Validations.Nip.IRepositories;
+using Validations.Nip.Repositories;
+
+var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<INipRepostory, NipRepostiory>();
 builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("CorsPolicy", builder =>

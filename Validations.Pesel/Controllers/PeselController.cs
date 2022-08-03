@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Validations.Pesel.IRepositories;
 using Validations.Pesel.Models;
-using Validations.Pesel.Validations;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Validations.Pesel.Controllers
 {
@@ -14,21 +13,32 @@ namespace Validations.Pesel.Controllers
     [Route("[controller]")]
     public class PeselController : ControllerBase
     {
+        private readonly IPeselRepository _peselRepository;
+        private readonly IPeselUtilityRepository _peselUtilityRepository;
+
+        public PeselController(IPeselRepository peselRepository,
+            IPeselUtilityRepository peselUtilityRepository)
+        {
+            _peselRepository = peselRepository;
+            _peselUtilityRepository = peselUtilityRepository;
+        }
+
+
         // GET: /<controller>/
         [HttpGet("allPeselData/{pesel}")]
         public IActionResult GetAllData(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
+            bool result = _peselRepository.PeselIsValid(pesel);
 
             if(result)
             {
                 PeselVM peselVM = new()
                 {
                     Pesel = pesel,
-                    Year = PeselUtility.GetYearOfDateOfBirth(pesel),
-                    Month = PeselUtility.GetMonthOfDateOfBirth(pesel),
-                    Day = PeselUtility.GetDayOfDateOfBirth(pesel),
-                    Gender = PeselUtility.Gender(pesel)
+                    Year = _peselUtilityRepository.GetYearOfDateOfBirth(pesel),
+                    Month = _peselUtilityRepository.GetMonthOfDateOfBirth(pesel),
+                    Day = _peselUtilityRepository.GetDayOfDateOfBirth(pesel),
+                    Gender = _peselUtilityRepository.GetGender(pesel)
                 };
                 return Ok(peselVM);
             }
@@ -38,8 +48,7 @@ namespace Validations.Pesel.Controllers
         [HttpGet("peselIsValid/{pesel}")]
         public IActionResult PeselIsValid(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
-
+            bool result = _peselRepository.PeselIsValid(pesel);
             if (result)
             {
                 return Ok();
@@ -51,11 +60,11 @@ namespace Validations.Pesel.Controllers
         [HttpGet("getYearOfBirth/{pesel}")]
         public IActionResult GetYearOfBirth(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
+            bool result = _peselRepository.PeselIsValid(pesel);
 
             if (result)
             {
-                string year = PeselUtility.GetYearOfDateOfBirth(pesel);
+                string year = _peselUtilityRepository.GetYearOfDateOfBirth(pesel);
                 return Ok(year);
             }
             else return Problem("Pesel jest nieprawidłowy.");
@@ -65,11 +74,11 @@ namespace Validations.Pesel.Controllers
         [HttpGet("getMonthOfBirth/{pesel}")]
         public IActionResult GetMonthOfBirth(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
+            bool result = _peselRepository.PeselIsValid(pesel);
 
             if (result)
             {
-                string month = PeselUtility.GetMonthOfDateOfBirth(pesel);
+                string month = _peselUtilityRepository.GetMonthOfDateOfBirth(pesel);
                 return Ok(month);
             }
             else return Problem("Pesel jest nieprawidłowy.");
@@ -79,11 +88,11 @@ namespace Validations.Pesel.Controllers
         [HttpGet("getDayOfBirth/{pesel}")]
         public IActionResult GetDayhOfBirth(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
+            bool result = _peselRepository.PeselIsValid(pesel) ? true : false;
 
             if (result)
             {
-                string day = PeselUtility.GetDayOfDateOfBirth(pesel);
+                string day = _peselUtilityRepository.GetDayOfDateOfBirth(pesel);
                 return Ok(day);
             }
             else return Problem("Pesel jest nieprawidłowy.");
@@ -93,11 +102,11 @@ namespace Validations.Pesel.Controllers
         [HttpGet("getGender/{pesel}")]
         public IActionResult GetGender(string pesel)
         {
-            bool result = PeselValidator.PeselIsValid(pesel) ? true : false;
+            bool result = _peselRepository.PeselIsValid(pesel) ? true : false;
 
             if (result)
             {
-                string gender = PeselUtility.Gender(pesel);
+                string gender = _peselUtilityRepository.GetGender(pesel);
                 return Ok(gender);
             }
             else return Problem("Pesel jest nieprawidłowy.");

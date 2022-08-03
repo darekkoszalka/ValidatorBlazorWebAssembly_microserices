@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validations.Client", "Valid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validations.Nip", "Validations.Nip\Validations.Nip.csproj", "{49A3E306-0694-42F2-BA9A-A83AA2AE9C25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validations.Pesel.Tests", "Validations.Pesel.Tests\Validations.Pesel.Tests.csproj", "{9FE84C94-05A8-4858-98EC-0A896AFED868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validations.Nip.Tests", "Validations.Nip.Tests\Validations.Nip.Tests.csproj", "{273EE2D2-57E6-4F9A-8DF2-D4445F3744EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{49A3E306-0694-42F2-BA9A-A83AA2AE9C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A3E306-0694-42F2-BA9A-A83AA2AE9C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A3E306-0694-42F2-BA9A-A83AA2AE9C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE84C94-05A8-4858-98EC-0A896AFED868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE84C94-05A8-4858-98EC-0A896AFED868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE84C94-05A8-4858-98EC-0A896AFED868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE84C94-05A8-4858-98EC-0A896AFED868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273EE2D2-57E6-4F9A-8DF2-D4445F3744EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273EE2D2-57E6-4F9A-8DF2-D4445F3744EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273EE2D2-57E6-4F9A-8DF2-D4445F3744EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273EE2D2-57E6-4F9A-8DF2-D4445F3744EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

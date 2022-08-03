@@ -33,5 +33,7 @@ public class NipValidator
         }
         return controlSum;
     }
+
+
 }
 
